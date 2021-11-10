@@ -5,8 +5,8 @@ const materiales = []
 
 let saldoMaterialesLocal = localStorage.getItem("saldoMateriales")
     console.log(saldoMaterialesLocal)
-
-    document.getElementById("saldoMateriales").innerText = `Saldo Materiales: $${saldoMaterialesLocal}`
+if (document.querySelector("#titulo").innerText == "Estados") {
+    document.getElementById("saldoMateriales").innerText = `Saldo Materiales: $${saldoMaterialesLocal}`}
 // // ------CUENTAS-------
 // 
 
