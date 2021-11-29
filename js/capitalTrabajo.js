@@ -105,6 +105,11 @@ const cantidadMaterial = document.getElementById("cantidadMaterial")
 const valorMaterial = document.getElementById("valorMaterial")
 const agregarMaterial = document.getElementById("agregarMaterial")
 
+nombreMaterial.addEventListener("input",() => {
+    if (nombreMaterial.value == ""){
+        nombreMaterial.classList.add("btn-danger")
+    }
+})
 cantidadMaterial.addEventListener("input", () => {
     if (isNaN(cantidadMaterial.value)){
         cantidadMaterial.classList.add("btn-danger")}
@@ -121,41 +126,65 @@ valorMaterial.addEventListener("input", () => {
         valorMaterial.classList.remove("btn-danger")
     }
 })
-const agregaMaterial = () =>{
+
+
+const agregaMaterialFun = () =>{
     
     materiales.forEach(material => {
         const div = document.createElement('div')
         div.innerHTML = ` <p class="orden">${material.nombre}</p>
         <p class="cantidad">${material.cantidad}</p>
         <p class="valorUni" >${material.valor}</p>
-        <p class="valorTot">${material.valorTotal}</p>`
+        <p class="valorTot">${material.valorTotal}</p>
+        <button class="botonEliminar" id="${material.nombre}"> <i class="fas fa-trash-restore-alt"></i></button>`
+        console.log(material.nombre)
         document.getElementById("materiales").appendChild(div)
+        document.getElementById(`${material.nombre}`).addEventListener("click", () => {
+            eliminarMaterialFun()
+        } )
     })}
-    agregarMaterial.addEventListener("submit", (e) => {
-        e.preventDefault()
-        document.getElementById("materiales").innerHTML = ""
-        const materialNombre = nombreMaterial.value
-        const cantidad = parseInt(cantidadMaterial.value)
-        const valor = parseInt(valorMaterial.value)
-        const material = new Material(materialNombre, cantidad, valor)
-        
-        materiales.push(material)
-        console.log(materiales)
-        agregarMaterial.reset()
-        agregaMaterial()
 
-        saldoMateriales = 0
-        for (let i=0;i < materiales.length;i++){
-            saldoMateriales += materiales[i].valorTotal
-            localStorage.setItem("saldoMateriales",saldoMateriales); 
-            
-        }
+agregarMaterial.addEventListener("submit", (e) => {
+    e.preventDefault()
+    if (nombreMaterial.value == ""){
+        nombreMaterial.classList.add("btn-danger")
+        console.log("error")
+    }
+    else {
+    document.getElementById("materiales").innerHTML = ""
+
+    const materialNombre = nombreMaterial.value
+    const cantidad = parseInt(cantidadMaterial.value)
+    const valor = parseInt(valorMaterial.value)
+    const material = new Material(materialNombre, cantidad, valor)
+    
+    materiales.push(material)
+    console.log(materiales)
+    agregarMaterial.reset()
+    agregaMaterialFun()    
+    saldoMateriales = 0
+    for (let i=0;i < materiales.length;i++){
+        saldoMateriales += materiales[i].valorTotal
+        localStorage.setItem("saldoMateriales",saldoMateriales); 
         
-        
-        
-    })
+}}})
+    
+const eliminarMaterialFun = (nombreMaterial => {
+    const material = materiales.find((material) => material.nombre === nombreMaterial)
+    const indice = materiales.indexOf(nombreMaterial)
+    materiales.splice(indice,1)
+    document.getElementById("materiales").innerHTML = ""
+    console.log(materiales) 
+}) 
+materiales.forEach(material => {
+    document.getElementById(`${material.nombre}`).addEventListener("click", () => {
+        console.log("anda")
+    } )
     
     
+})
+
+
 // ------FIN A PAGAR-------
 
 
