@@ -88,8 +88,10 @@ if (document.querySelector("#titulo").innerText == "Estados") {
 //         const Transacciones = []
 // t = new Transaccion(nombre, descripcion, valor, cuentas, )
 // // ------FIN TRANSACCIONES-------
+
 // // ------A PAGAR-------
 
+//CREA EL OBTEJO DEL MATERIAL
 class Material{
     constructor (nombre,cantidad,valor){
     this.nombre = nombre
@@ -98,18 +100,23 @@ class Material{
     this.valorTotal = ((cantidad) * (valor))}
 
 }
-        // -----MANEJO DEL DOM------
-        
+
+//SELECCINA ELEMENTOS DEL DOM    
 const nombreMaterial = document.getElementById("nombreMaterial")
 const cantidadMaterial = document.getElementById("cantidadMaterial")
 const valorMaterial = document.getElementById("valorMaterial")
 const agregarMaterial = document.getElementById("agregarMaterial")
 
-nombreMaterial.addEventListener("blur",() => {
+
+//MUESTRA ERROR EN EL DOM (SIN VALIDACION)
+nombreMaterial.focus(addEventListener("focusout",() => {
     if (nombreMaterial.value == ""){
         nombreMaterial.classList.add("btn-danger")
     }
-})
+    else {
+        nombreMaterial.classList.remove("btn-danger")
+    }
+}))
 cantidadMaterial.addEventListener("input", () => {
     if (isNaN(cantidadMaterial.value)){
         cantidadMaterial.classList.add("btn-danger")}
@@ -127,9 +134,9 @@ valorMaterial.addEventListener("input", () => {
     }
 })
 
-
+//VALIDACIONES, SUMA AL ARRAY MATERIALES Y VISTA DEL DOM
+//
 const actualizarVistaMateriales = () =>{
-    
     materiales.forEach(material => {
         const div = document.createElement('div')
         div.innerHTML = ` <p class="orden">${material.nombre}</p>
@@ -138,17 +145,13 @@ const actualizarVistaMateriales = () =>{
         <p class="valorTot">${material.valorTotal}</p>
         <button class="botonEliminar" id="${material.nombre}"> <i class="fas fa-trash-restore-alt"></i></button>`
         console.log(material.nombre)
-        document.getElementById("materiales").appendChild(div)
-        document.getElementById(`${material.nombre}`).addEventListener("click", () => {
-            eliminarMaterialFun()
-        } )
+        document.getElementById("materiales").appendChild(div)    
     })}
+    
 agregarMaterial.addEventListener("submit", (e) => {
     e.preventDefault()
     if (nombreMaterial.value == ""){
-        nombreMaterial.classList.add("btn-danger")
         Toastify({
-
             text: "Material no puede estar vacio",
             close: true,
             duration: 3000,
@@ -156,31 +159,56 @@ agregarMaterial.addEventListener("submit", (e) => {
                 background: "red",
               },
             }).showToast();
+            return
+    }
+    if (isNaN(cantidadMaterial.value) || cantidadMaterial.value == "" ){
+        Toastify({
+            text: "La cantidad de material tiene que ser un numero",
+            close: true,
+            duration: 3000,
+            style: {
+                background: "red",
+              },
+            }).showToast();
+            return
+    }
+    if (isNaN(valorMaterial.value) || valorMaterial.value == ""){
+        Toastify({
+            text: "El valor tiene que ser un numero",
+            close: true,
+            duration: 3000,
+            style: {
+                background: "red",
+              },
+            }).showToast();
+            return
     }
     else {
-    document.getElementById("materiales").innerHTML = ""
+        document.getElementById("materiales").innerHTML = ""
 
-    const materialNombre = nombreMaterial.value
-    const cantidad = parseInt(cantidadMaterial.value)
-    const valor = parseInt(valorMaterial.value)
-    const material = new Material(materialNombre, cantidad, valor)
-    
-    materiales.push(material)
-    console.log(materiales)
-    agregarMaterial.reset()
-    agregaMaterialFun()    
-    saldoMateriales = 0
-    for (let i=0;i < materiales.length;i++){
-        saldoMateriales += materiales[i].valorTotal
-        localStorage.setItem("saldoMateriales",saldoMateriales); 
+        const materialNombre = nombreMaterial.value
+        const cantidad = parseInt(cantidadMaterial.value)
+        const valor = parseInt(valorMaterial.value)
+        const material = new Material(materialNombre, cantidad, valor)
+        materiales.push(material)
+        console.log(materiales)
+        agregarMaterial.reset()
+        actualizarVistaMateriales()    
+        saldoMateriales = 0
+        for (let i=0;i < materiales.length;i++){
+            saldoMateriales += materiales[i].valorTotal
+            localStorage.setItem("saldoMateriales",saldoMateriales); 
         
 }}})
-    
-const eliminarMaterialFun = (nombreMaterial => {
+
+
+const eliminarMaterial = (nombreMaterial => {
     const material = materiales.find((material) => material.nombre === nombreMaterial)
     const indice = materiales.indexOf(nombreMaterial)
     materiales.splice(indice,1)
-   
+    document.getElementById(`${material.nombre}`).addEventListener("click", () => {
+        eliminarMaterial()
+    } )
     console.log(materiales) 
 }) 
 materiales.forEach(material => {
