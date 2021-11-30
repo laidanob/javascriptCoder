@@ -105,7 +105,7 @@ const cantidadMaterial = document.getElementById("cantidadMaterial")
 const valorMaterial = document.getElementById("valorMaterial")
 const agregarMaterial = document.getElementById("agregarMaterial")
 
-nombreMaterial.addEventListener("input",() => {
+nombreMaterial.addEventListener("blur",() => {
     if (nombreMaterial.value == ""){
         nombreMaterial.classList.add("btn-danger")
     }
@@ -128,7 +128,7 @@ valorMaterial.addEventListener("input", () => {
 })
 
 
-const agregaMaterialFun = () =>{
+const actualizarVistaMateriales = () =>{
     
     materiales.forEach(material => {
         const div = document.createElement('div')
@@ -143,12 +143,19 @@ const agregaMaterialFun = () =>{
             eliminarMaterialFun()
         } )
     })}
-
 agregarMaterial.addEventListener("submit", (e) => {
     e.preventDefault()
     if (nombreMaterial.value == ""){
         nombreMaterial.classList.add("btn-danger")
-        console.log("error")
+        Toastify({
+
+            text: "Material no puede estar vacio",
+            close: true,
+            duration: 3000,
+            style: {
+                background: "red",
+              },
+            }).showToast();
     }
     else {
     document.getElementById("materiales").innerHTML = ""
@@ -173,7 +180,7 @@ const eliminarMaterialFun = (nombreMaterial => {
     const material = materiales.find((material) => material.nombre === nombreMaterial)
     const indice = materiales.indexOf(nombreMaterial)
     materiales.splice(indice,1)
-    document.getElementById("materiales").innerHTML = ""
+   
     console.log(materiales) 
 }) 
 materiales.forEach(material => {
