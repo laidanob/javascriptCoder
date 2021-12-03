@@ -137,6 +137,7 @@ valorMaterial.addEventListener("input", () => {
 //VALIDACIONES, SUMA AL ARRAY MATERIALES Y VISTA DEL DOM
 //
 const actualizarVistaMateriales = () =>{
+    document.getElementById("materiales").innerHTML = ""
     materiales.forEach(material => {
         const div = document.createElement('div')
         div.innerHTML = ` <p class="orden">${material.nombre}</p>
@@ -144,10 +145,14 @@ const actualizarVistaMateriales = () =>{
         <p class="valorUni" >${material.valor}</p>
         <p class="valorTot">${material.valorTotal}</p>
         <button class="botonEliminar" id="${material.nombre}"> <i class="fas fa-trash-restore-alt"></i></button>`
-        console.log(material.nombre)
         document.getElementById("materiales").appendChild(div)    
+        document.getElementById(material.nombre).addEventListener("click", () => {
+            eliminarMaterial(material.nombre)
+        })
+        
     })}
     
+
 agregarMaterial.addEventListener("submit", (e) => {
     e.preventDefault()
     if (nombreMaterial.value == ""){
@@ -161,6 +166,22 @@ agregarMaterial.addEventListener("submit", (e) => {
             }).showToast();
             return
     }
+    
+    esvalido = validadorNombre(nombreMaterial.value)
+    if (esvalido == true){
+        Toastify({
+            text: "no se permiten nombre repetidos",
+            close: true,
+            duration: 3000,
+            style: {
+                background: "red",
+              },
+            }).showToast();
+            return
+    }
+    else{
+
+    
     if (isNaN(cantidadMaterial.value) || cantidadMaterial.value == "" ){
         Toastify({
             text: "La cantidad de material tiene que ser un numero",
@@ -172,6 +193,7 @@ agregarMaterial.addEventListener("submit", (e) => {
             }).showToast();
             return
     }
+    
     if (isNaN(valorMaterial.value) || valorMaterial.value == ""){
         Toastify({
             text: "El valor tiene que ser un numero",
@@ -183,43 +205,45 @@ agregarMaterial.addEventListener("submit", (e) => {
             }).showToast();
             return
     }
-    else {
-        document.getElementById("materiales").innerHTML = ""
+       
 
+    else {
+        
+
+    agregarMaterialF()
+
+}}})
+const validadorNombre = (nombre) => {
+    const material = materiales.find((material) => material.nombre === nombre)
+    const include = materiales.includes(material)
+    return include
+}
+
+const eliminarMaterial = (nombreMaterial) => {
+    const material = materiales.find((material) => material.nombre === nombreMaterial)
+    const indice = materiales.indexOf(material)
+    console.log(materiales.splice(indice,1))
+    actualizarVistaMateriales()
+    } 
+    const agregarMaterialF = () => {
         const materialNombre = nombreMaterial.value
         const cantidad = parseInt(cantidadMaterial.value)
         const valor = parseInt(valorMaterial.value)
         const material = new Material(materialNombre, cantidad, valor)
         materiales.push(material)
-        console.log(materiales)
         agregarMaterial.reset()
-        actualizarVistaMateriales()    
+        actualizarVistaMateriales()  
+        // document.getElementById(`${material.nombre}`).addEventListener("click", () => {
+        //     eliminarMaterial(material.nombre)})   
         saldoMateriales = 0
         for (let i=0;i < materiales.length;i++){
             saldoMateriales += materiales[i].valorTotal
             localStorage.setItem("saldoMateriales",saldoMateriales); 
+             
+}
         
-}}})
-
-
-const eliminarMaterial = (nombreMaterial => {
-    const material = materiales.find((material) => material.nombre === nombreMaterial)
-    const indice = materiales.indexOf(nombreMaterial)
-    materiales.splice(indice,1)
-    document.getElementById(`${material.nombre}`).addEventListener("click", () => {
-        eliminarMaterial()
-    } )
-    console.log(materiales) 
-}) 
-materiales.forEach(material => {
-    document.getElementById(`${material.nombre}`).addEventListener("click", () => {
-        console.log("anda")
-    } )
-    
-    
-})
-
-
+}
+ 
 // ------FIN A PAGAR-------
 
 
