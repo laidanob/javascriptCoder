@@ -1,0 +1,36 @@
+[
+    {
+        "nombre": "MercadoPago",
+        "saldo": 0,
+        "moneda": "ARS"
+    },
+    {
+        "nombre": "Efetivo",
+        "saldo": 0,
+        "moneda": "ARS" 
+    },
+    {
+        "nombre": "Uala",
+        "saldo": 0,
+        "moneda": "ARS" 
+    },
+    {
+        "nombre": "BancoSantander",
+        "saldo": 0,
+        "moneda": "ARS" 
+    },
+    {
+        "nombre": "BancoSantander",
+        "saldo": 0,
+        "moneda": "ARS" 
+    },
+    {
+        "nombre": "Tesoro en USD",
+        "saldo": 0,
+        "moneda": "USD" 
+    }
+
+
+
+
+]
