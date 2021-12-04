@@ -8,10 +8,10 @@ let saldoMaterialesLocal = localStorage.getItem("saldoMateriales")
 if (document.querySelector("#titulo").innerText == "Estados") {
     document.getElementById("saldoMateriales").innerText = `Saldo Materiales: $${saldoMaterialesLocal}`}
 // // ------CUENTAS-------
-fetch("https://brunincoderhouse.madeinrabbit.com/cuentas.JSON",{mode: 'cors'})
+fetch("https://brunincoderhouse.madeinrabbit.com/cuentas.JSON",) //
     .then(cuentas => cuentas.json())
 .then(data => console.log(data))
-
+console.log("si el proyecto es ejecutado en local, el fetch va a dar un error de CORS")
 // // ------A PAGAR-------
 //ESTE CODIGO 
 if (document.querySelector("#titulo").innerText == "A pagar"){ //ESTE CODIGO HACE QUE SE EJECUTE EN UNA PAGINA DETERMINADA
