@@ -8,8 +8,9 @@ let saldoMaterialesLocal = localStorage.getItem("saldoMateriales")
 if (document.querySelector("#titulo").innerText == "Estados") {
     document.getElementById("saldoMateriales").innerText = `Saldo Materiales: $${saldoMaterialesLocal}`}
 // // ------CUENTAS-------
-fetch("./js/cuentas.JSON")
-    .then((cuentas) => console.log(cuentas))
+fetch("https://brunincoderhouse.madeinrabbit.com/cuentas.JSON",{mode: 'cors'})
+    .then(cuentas => cuentas.json())
+.then(data => console.log(data))
 
 // // ------A PAGAR-------
 //ESTE CODIGO 
