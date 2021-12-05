@@ -16,7 +16,7 @@ fetch("https://brunincoderhouse.madeinrabbit.com/js/cuentas.JSON",{mode: 'cors'}
         console.log(data)
         
     }))
-}    
+}
 // // ------A PAGAR-------
 
 if (document.querySelector("#titulo").innerText == "A pagar"){ //HACE QUE SE EJECUTE EN UNA PAGINA DETERMINADA
