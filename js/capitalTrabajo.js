@@ -8,13 +8,17 @@ let saldoMaterialesLocal = localStorage.getItem("saldoMateriales")
 if (document.querySelector("#titulo").innerText == "Estados") {
     document.getElementById("saldoMateriales").innerText = `Saldo Materiales: $${saldoMaterialesLocal}`}
 // // ------CUENTAS-------
+if (document.querySelector("#titulo").innerText == "Cuentas"){
 fetch("https://brunincoderhouse.madeinrabbit.com/cuentas.JSON",{mode: 'cors'})
     .then(cuentas => cuentas.json())
-.then(data => console.log(data))
-
+    .then(data =>  data.forEach(material => {
+        console.log(`Material${material}`)
+        
+    }))
+}    
 // // ------A PAGAR-------
-//ESTE CODIGO 
-if (document.querySelector("#titulo").innerText == "A pagar"){ //ESTE CODIGO HACE QUE SE EJECUTE EN UNA PAGINA DETERMINADA
+
+if (document.querySelector("#titulo").innerText == "A pagar"){ //HACE QUE SE EJECUTE EN UNA PAGINA DETERMINADA
     //CREA EL OBTEJO DEL MATERIAL
 
     class Material{
