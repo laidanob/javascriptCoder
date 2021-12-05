@@ -9,10 +9,11 @@ if (document.querySelector("#titulo").innerText == "Estados") {
     document.getElementById("saldoMateriales").innerText = `Saldo Materiales: $${saldoMaterialesLocal}`}
 // // ------CUENTAS-------
 if (document.querySelector("#titulo").innerText == "Cuentas"){
-fetch("https://brunincoderhouse.madeinrabbit.com/cuentas.JSON",{mode: 'cors'})
+fetch("https://brunincoderhouse.madeinrabbit.com/js/cuentas.JSON",{mode: 'cors'})
     .then(cuentas => cuentas.json())
-    .then(data =>  data.forEach(material => {
-        console.log(`Material${material}`)
+    .then(data =>  data.forEach(cuenta => {
+        console.log(`Material ${cuenta.nombre}`)
+        console.log(data)
         
     }))
 }    

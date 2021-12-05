@@ -19,11 +19,7 @@
         "saldo": 0,
         "moneda": "ARS" 
     },
-    {
-        "nombre": "BancoSantander",
-        "saldo": 0,
-        "moneda": "ARS" 
-    },
+    
     {
         "nombre": "Tesoro en USD",
         "saldo": 0,
