@@ -12,10 +12,17 @@ if (document.querySelector("#titulo").innerText == "Cuentas"){
 fetch("https://brunincoderhouse.madeinrabbit.com/js/cuentas.JSON",{mode: 'cors'})
     .then(cuentas => cuentas.json())
     .then(data =>  data.forEach(cuenta => {
-        console.log(`Material ${cuenta.nombre}`)
+        console.log(`Material ${cuenta.id}`)
         console.log(data)
-        
+        localStorage.setItem("cuentas",JSON.stringify(data));
+        const div = document.createElement('div')
+        div.innerHTML = ` <p class="cuenta">${cuenta.nombre}</p>
+        <p class="saldo">${cuenta.saldo}</p>`
+        document.getElementById("cuentas").appendChild(div)    
+    
+
     }))
+    
 }
 // // ------A PAGAR-------
 
