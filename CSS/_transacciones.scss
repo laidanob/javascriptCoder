@@ -1,0 +1,92 @@
+/* TRANSACCIONES */
+
+#transacciones{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+   grid-template-areas:
+   "valor valor cuentaC cuentaC tipo tipo motivo motivo mes mes . ."
+   "contTT contTT contTT contTT contTT contTT contTT contTT contTT contTT contTT contTT";
+   height: 14px;
+   width: 100%;
+   margin:54px 0px 18px 0px;
+   justify-items: center;
+   align-items: center;
+   grid-auto-flow: dense;
+   p {
+  
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+        width: 92px;
+        height: 14px;
+        text-align: center;
+    }
+}
+
+   .valor{
+       grid-area: valor;
+   
+   }
+   .cuentaTransC{
+       grid-area: cuentaC;
+   }
+   .tipo{
+       grid-area: tipo;
+   }
+   .motivo{
+       grid-area: motivo;
+   }
+   .mes{
+       grid-area: mes;
+   }
+
+   #contenedorTrans{
+    position: static;
+    background: white;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+margin: 50px 16px 0px 16px;
+width: 98%;
+height: 50vh;
+overflow-x: hidden;
+overflow-y: scroll;
+grid-area: contTT;
+
+div { display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-areas:
+    "valor valor cuentaC cuentaC tipo tipo motivo motivo mes mes eliminar eliminar" ;
+    justify-items: center;
+    align-items: center;
+    margin: 10px 0 10px 0;
+
+}
+}
+   #agregarTrans{
+       display: grid;
+   grid-template-columns: repeat(12,1fr);
+   grid-template-areas:
+   "valorTrans valorTrans cuentasTrans cuentasTrans tipoTrans tipoTrans motivoTrans motivoTrans mesTrans mesTrans boton boton" ;
+   justify-items: center;
+   align-items: center;
+       position: absolute;
+       height: 50px;
+       width: 100%;
+       bottom: 50px;
+   }
+
+   #valorTrans{
+       width: 100%;
+       grid-area: valorTrans;}
+   #cuentasTrans{
+       grid-area:cuentasTrans;
+   }
+   #tipoTrans{
+       grid-area:tipoTrans;
+   }
+   #motivoTrans{
+       grid-area:motivoTrans;
+   }
+   #mesTrans{
+       grid-area:mesTrans;
+   }

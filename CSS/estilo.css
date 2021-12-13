@@ -1,245 +1,352 @@
-*{
-	margin: 0;
-	padding: 0;
-	border: none;
+/* -----GENERALES------ */
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
-body{
-    background-color: #FFF5E6;
+body {
+  background-color: #FFF5E6;
 }
 
-/* -----DIVS------ */
-#menuBajo{
-    height: 50px;
-    width: 100%;
-    background-color: #4DB6AC;
-    position: absolute;
-    bottom: 0;
-    color: white;
-
-    
+/* -----DIVS GENERALES------ */
+#menuBajo {
+  height: 50px;
+  width: 100%;
+  background-color: #4DB6AC;
+  position: absolute;
+  bottom: 0;
+  color: white;
 }
 
-#menuBajo div{
-    margin: 0 25% 0 25%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
+#menuBajo div {
+  margin: 0 25% 0 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
 #menuBajo a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
-#menuBajo a:hover{
-    color: black;
-    transition: 0.5s;
+#menuBajo a:hover {
+  color: black;
+  transition: 0.5s;
 }
 
-#barraDeSeccion{
-    position: static;
-    height: 48px;
-    background-color: white;
-    width: 100%;
-    box-shadow: 0px 15px 10px -15px #111; 
-    display: flex;
-    align-items: center;
-    
+#barraDeSeccion {
+  position: static;
+  height: 48px;
+  background-color: white;
+  width: 100%;
+  box-shadow: 0px 15px 10px -15px #111;
+  display: flex;
+  align-items: center;
 }
 
-#estados{
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    flex-direction: column;
+.inputDom {
+  height: 36px;
+  border: rgba(0, 0, 0, 0.603) 1px solid;
 }
 
-#totalConPagos{
-    width: 360px;
-    height: 160px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    margin-bottom: 90px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-#otrosEstados{ 
-    width: 740px;
-    height: 36px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-display: flex;
-flex-direction: row;
-justify-content:space-around;
-align-items: center;
-
-}
-
-/* ------TEXTOS------ */
+/* ------TEXTOS GENERALES------ */
 p {
-    margin: 0px;
+  margin: 0px;
 }
 
 #titulo {
-    color: #4DB6AC;
-    margin: 0px 0px 0px 10%;
+  color: #4DB6AC;
+  margin: 0px 0px 0px 10%;
 }
 
-#saldoConPagos{
-    font-size: 64px;
-line-height: 77px;
+/* ------BOTONES GENERALES------ */
+.botonEliminar {
+  grid-area: eliminar;
 }
 
-#cabezaMateriales{
-   /* position: relative; */
-    display: grid;
-    grid-template-columns: repeat(12,1fr);
-   grid-template-areas:
-   "orden orden . . cantidad cantidad valorUni valorUni valorTot ValorTot . ." ;
-   height: 14px;
-   width: 100%;
-   margin:54px 0px 18px 0px;
-   justify-items: center;
-   align-items: center;
+.botonAgregar {
+  color: white;
+  background-color: #f06291c5;
+  height: 36px;
+  width: 200px;
+  grid-area: boton;
 }
 
-#cabezaMateriales p {
-   
-font-style: normal;
-font-weight: bold;
-font-size: 12px;
-    width: 92px;
-    height: 14px;
-    text-align: center;
-}
-.orden{
-    grid-area: orden;
-}
-.cantidad{
-    grid-area: cantidad ;
-}
-.valorUni{
-    grid-area: valorUni;
-}
-.valorTot{
-    grid-area: valorTot;
+/* materiales */
+.orden {
+  grid-area: orden;
 }
 
-#materiales{
-    position: static;
-    background: white;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-margin: 0px 16px 0px 16px;
-width: 98%;
-height: 50vh;
-overflow-x: hidden;
-overflow-y: scroll;
-}
-#materiales div {display: grid;
-    grid-template-columns: repeat(12,1fr);
-    grid-template-areas:
-    "orden orden . . cantidad cantidad valorUni valorUni valorTot ValorTot . eliminar" ;
-    justify-items: center;
-    align-items: center;
-
-}
-#agregarMaterial{
-    display: grid;
-grid-template-columns: repeat(12,1fr);
-grid-template-areas:
-". . orden orden orden cantidad cantidad valorUni valorUni boton . ." ;
-justify-items: center;
-align-items: center;
-    position: absolute;
-    height: 50px;
-    width: 100%;
-    bottom: 50px;
+.cantidad {
+  grid-area: cantidad;
 }
 
-.boton{color: white;
-background-color: #f06291c5;
-height: 36px;
-width: 200px;}
-
-.inputDom{
-    height: 36px;
-    border: rgba(0, 0, 0, 0.603) 1px solid;
-}
-#nombreMaterial{
-    width: 100%;
-    grid-area: orden;}
-#cantidadMaterial{
-    grid-area:cantidad;
-}
-#valorMaterial{
-    grid-area:valorUni;
-}
-.botonEliminar{
-    grid-area:eliminar
-}
-#botonMaterial{
-    
-    grid-area: boton;
+.valorUni {
+  grid-area: valorUni;
 }
 
-#cabezaCuentas{
-    /* position: relative; */
-     display: grid;
-     grid-template-columns: repeat(12,1fr);
-    grid-template-areas:
-    ". . cuenta . . . saldoCuenta saldoCuenta . . . ."
-    ". . cuentas cuentas cuentas cuentas cuentas cuentas cuentas cuentas . ." ;
-    height: 14px;
-    width: 100%;
-    margin:54px 0px 18px 0px;
-    justify-items: center;
-    align-items: center;
- }
-
- #cuentaHead{
-grid-area: cuenta;
- }
- #saldoCuentaHead{
-grid-area: saldoCuenta;
- }
-#cuentas{
-    grid-area:cuentas;
+.valorTot {
+  grid-area: valorTot;
 }
 
- #cuentas{
-    position: static;
-    background: white;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-margin: 0px 16px 0px 16px;
-width: 100%;
-height: 50vh;
-overflow-x: hidden;
-overflow-y: scroll;
- }
-
-
- #cuentas div {display: grid;
-    grid-template-columns: repeat(12,1fr);
-    grid-template-areas:
-    ". . cuentaDiv . . . saldoDiv saldoDiv . . . ." ;
-    justify-items: center;
-    align-items: center;
- }
- .cuenta{
-    width: 100%;
-    grid-area: cuentaDiv;}
-
-.saldo{
-    grid-area:saldoDiv;
+#materiales {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: "orden orden . . cantidad cantidad valorUni valorUni valorTot ValorTot . ." "contMT contMT contMT contMT contMT contMT contMT contMT contMT contMT contMT contMT ";
+  height: 14px;
+  width: 100%;
+  margin: 54px 0px 18px 0px;
+  justify-items: center;
+  align-items: center;
+  grid-auto-flow: dense;
 }
+
+#materiales p {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  width: 92px;
+  height: 14px;
+  text-align: center;
+}
+
+#contenedorMat {
+  position: static;
+  background: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin: 50px 16px 0px 16px;
+  width: 98%;
+  height: 50vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  grid-area: contMT;
+}
+
+#contenedorMat div {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: "orden orden . . cantidad cantidad valorUni valorUni valorTot ValorTot . eliminar";
+  justify-items: center;
+  align-items: center;
+  margin: 10px 0 10px 0;
+}
+
+#agregarMaterial {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: ". . orden orden orden cantidad cantidad valorUni valorUni boton . .";
+  justify-items: center;
+  align-items: center;
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  bottom: 50px;
+}
+
+#nombreMaterial {
+  width: 100%;
+  grid-area: orden;
+}
+
+#cantidadMaterial {
+  grid-area: cantidad;
+}
+
+#valorMaterial {
+  grid-area: valorUni;
+}
+
+.botonEliminar {
+  grid-area: eliminar;
+}
+
+#estados {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+#totalConPagos {
+  width: 550px;
+  height: 260px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin-bottom: 90px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#otrosEstados {
+  width: 740px;
+  height: 36px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#saldoConPagos {
+  font-size: 64px;
+  line-height: 77px;
+}
+
+/* cuentas */
+#cabezaCuentas {
+  /* position: relative; */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: ". . cuenta . . . saldoCuenta saldoCuenta . . . ." ". . cuentas cuentas cuentas cuentas cuentas cuentas cuentas cuentas . .";
+  height: 14px;
+  width: 100%;
+  margin: 54px 0px 18px 0px;
+  justify-items: center;
+  align-items: center;
+}
+
+#cuentaHead {
+  grid-area: cuenta;
+}
+
+#saldoAlDia {
+  grid-area: saldoCuenta;
+}
+
+#listadoCuentas {
+  grid-area: cuentas;
+  position: static;
+  background: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin: 0px 16px 0px 16px;
+  width: 100%;
+  height: 50vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#listadoCuentas div {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: ". . cuentaDiv . . . saldoDiv saldoDiv . . . .";
+  justify-items: center;
+  align-items: center;
+}
+
+.nombreCuenta {
+  width: 100%;
+  grid-area: cuentaDiv;
+}
+
+.saldoCuenta {
+  grid-area: saldoDiv;
+}
+
+/* TRANSACCIONES */
+#transacciones {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: "valor valor cuentaC cuentaC tipo tipo motivo motivo mes mes . ." "contTT contTT contTT contTT contTT contTT contTT contTT contTT contTT contTT contTT";
+  height: 14px;
+  width: 100%;
+  margin: 54px 0px 18px 0px;
+  justify-items: center;
+  align-items: center;
+  grid-auto-flow: dense;
+}
+
+#transacciones p {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  width: 92px;
+  height: 14px;
+  text-align: center;
+}
+
+.valor {
+  grid-area: valor;
+}
+
+.cuentaTransC {
+  grid-area: cuentaC;
+}
+
+.tipo {
+  grid-area: tipo;
+}
+
+.motivo {
+  grid-area: motivo;
+}
+
+.mes {
+  grid-area: mes;
+}
+
+#contenedorTrans {
+  position: static;
+  background: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  margin: 50px 16px 0px 16px;
+  width: 98%;
+  height: 50vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  grid-area: contTT;
+}
+
+#contenedorTrans div {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: "valor valor cuentaC cuentaC tipo tipo motivo motivo mes mes eliminar eliminar";
+  justify-items: center;
+  align-items: center;
+  margin: 10px 0 10px 0;
+}
+
+#agregarTrans {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: "valorTrans valorTrans cuentasTrans cuentasTrans tipoTrans tipoTrans motivoTrans motivoTrans mesTrans mesTrans boton boton";
+  justify-items: center;
+  align-items: center;
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  bottom: 50px;
+}
+
+#valorTrans {
+  width: 100%;
+  grid-area: valorTrans;
+}
+
+#cuentasTrans {
+  grid-area: cuentasTrans;
+}
+
+#tipoTrans {
+  grid-area: tipoTrans;
+}
+
+#motivoTrans {
+  grid-area: motivoTrans;
+}
+
+#mesTrans {
+  grid-area: mesTrans;
+}
+/*# sourceMappingURL=estilo.css.map */
